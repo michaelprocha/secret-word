@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+	--bg-main: linear-gradient(180deg, rgba(0, 0, 200, 1) 0%, rgba(0, 0, 150, 1) 50%, rgba(0, 0, 100, 1) 100%);
+}
+
+@utility bg-main {
+  background-image: var(--bg-main);
+} 
+
+@layer base {
+	body {
+		@apply min-h-dvh bg-main;
+	}
+}
+
+@layer components {
+    .button{
+        @apply px-3 py-2 bg-yellow-300 cursor-pointer text-center uppercase font-bold rounded-3xl max-w-fit;
+    }
+
+    .button:active{
+        @apply bg-amber-400;
+    }
+}
