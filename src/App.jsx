@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Start from "./components/start";
 import Game from "./components/game";
+import EndGame from "./components/end_game";
 
 function App() {
 	const words = [
@@ -37,27 +38,56 @@ function App() {
 	];
 
 	const [score, setScore] = useState(0);
-  const [viewWord, setViewWord] = useState([])
-  const [viewGategory, setViewGategory] = useState("")
+	const [viewWord, setViewWord] = useState([]);
+	const [viewGategory, setViewGategory] = useState("");
+	const [selectedWord, setSelectedWord] = useState([]);
+	const [chances, setChances] = useState(3);
+	const [sectionStart, setSectionStart] = useState("flex");
+	const [sectionGame, setSectionGame] = useState("hidden");
+	const [sectionEnd, setSectionEnd] = useState("hidden");
 
-	const startGame = () => {
-		const position = Math.floor(Math.random() * (words.length + 2));
+	const resetWord = () => {
+		const position = Math.floor(Math.random() * words.length);
 
-		const selectedWord = words[position].word.split("");
+		const localSelectedWord = words[position].word.split("");
+		setSelectedWord(words[position].word.split(""));
 
-		const selectedWordForView = [...selectedWord];
-    selectedWordForView.fill("");
+		const selectedWordForView = [...localSelectedWord];
+		selectedWordForView.fill("");
 
 		const selectedGategory = words[position].category;
 
-    setViewGategory(selectedGategory);
-    setViewWord(selectedWordForView);
+		setViewGategory(selectedGategory);
+		setViewWord(selectedWordForView);
+	}
+
+	const startGame = () => {
+		resetWord();
+		setChances(3);
+		setScore(0);
+		setSectionStart("hidden");
+		setSectionEnd("hidden");
+		setSectionGame("flex");
 	};
 
 	return (
 		<main className="flex flex-col min-h-dvh">
-			<Start startGame={startGame} />
-			<Game score={score} setScore={setScore} viewWord={viewWord}/>
+			<Start startGame={startGame} section={sectionStart} />
+			<Game
+				setEndSection={setSectionEnd}
+				setOwnSection={setSectionGame}
+				section={sectionGame}
+				resetWord={resetWord}
+				score={score}
+				setScore={setScore}
+				viewWord={viewWord}
+				category={viewGategory}
+				secretWord={selectedWord}
+				setViewWord={setViewWord}
+				chances={chances}
+				setChances={setChances}
+			/>
+			<EndGame section={sectionEnd} score={score} startGame={startGame} />
 		</main>
 	);
 }

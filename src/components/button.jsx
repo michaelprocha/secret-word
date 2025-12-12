@@ -1,7 +1,7 @@
-function Button({ startGame }) {
+function Button({ action, textButton }) {
 	return (
-		<button onClick={startGame} className="button">
-			Iniciar jogo
+		<button onClick={action} className="button">
+			{textButton}
 		</button>
 	);
 }
