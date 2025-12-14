@@ -1,16 +1,66 @@
-# React + Vite
+# Secret word
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This website is a web-based word guessing game where the player must discover the hidden word by guessing letters. The player starts with three attempts. When a guessed letter is correct, the number of attempts does not decrease; when the guess is wrong, one attempt is lost. To avoid unnecessary penalties, the game keeps a history of guessed letters, preventing the player from repeating the same letter and losing an attempt for nothing.
+Each time the player successfully guesses the full word, they earn 100 points, and a new word is presented to continue the game.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- Three-attempt system with penalty only for wrong guesses
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Guessed letters history to prevent repeated guesses
 
-## Expanding the ESLint configuration
+- Score system with 100 points awarded per correct word
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Automatic generation of a new word after each successful round
+
+---
+
+## 📷 Screenshots
+
+### Desktop
+![screenshot-desktop](/public/secret_word_screen_shot.png)
+
+---
+
+## 🚀 Technologies
+
+- React
+
+- Tailwind
+
+- Vite
+
+---
+
+## 📦 How to use
+
+1. Clone the repository:
+```bash
+git clone https://github.com/michaelprocha/secret-word
+```
+
+2. Dowloand [NodeJS](https://nodejs.org/en/download).
+
+3. Install dependencies:
+```bash
+npm install
+```
+
+4. Run locally
+```bash
+npm run dev
+```
+
+---
+
+## 👨‍💻 Author
+
+Made by [Michael Rocha](https://github.com/michaelprocha)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
